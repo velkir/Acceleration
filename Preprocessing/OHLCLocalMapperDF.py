@@ -1,4 +1,4 @@
-from AbstractOHLCDataMapper import AbstractOHLCDataMapper
+from Preprocessing.AbstractOHLCDataMapper import AbstractOHLCDataMapper
 
 
 class OHLCLocalMapperDF(AbstractOHLCDataMapper):

@@ -1,6 +1,6 @@
 import datetime
-from AbstractOHLCDataMapper import AbstractOHLCDataMapper
-from AbstractOHLCDataSource import OHLCDataSource
+from Preprocessing.AbstractOHLCDataMapper import AbstractOHLCDataMapper
+from Preprocessing.AbstractOHLCDataSource import OHLCDataSource
 
 
 class OHLCDataManager:

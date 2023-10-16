@@ -1,5 +1,5 @@
 import pandas as pd
-from AbstractOHLCDataSource import OHLCDataSource
+from Preprocessing.AbstractOHLCDataSource import OHLCDataSource
 
 
 class OHLCLocalSource(OHLCDataSource):
