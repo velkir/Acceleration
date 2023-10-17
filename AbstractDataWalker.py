@@ -15,6 +15,3 @@ class AbstractDataWalker(ABC):
     def next(self):
         pass
 
-    @abstractmethod
-    def assign_parent_trend_as_current_trend(self):
-        pass
