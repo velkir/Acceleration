@@ -31,10 +31,8 @@ bars = ohlc_data_manager.prepare_ohlc_data()
 print(bars)
 
 data_walker = DataWalker(ohlc_data=bars)
-data_walker.next()
-#написать инициализацию пустой структуры
-# self.structure = structure
-#         self.current_trend = current_trend
-#         self.ohlc_data = ohlc_data
-#         self.current_bar = self.ohlc_data.iloc[0]
+for bar in range(bars.shape[0]):
+    print(f"Current bar: {bar}")
+    data_walker.next()
 
+print("Completed!")

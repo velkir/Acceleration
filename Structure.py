@@ -8,6 +8,9 @@ class Structure(AbstractStructure):
     def add_trend(self, trend):
         self.structure.append(trend)
 
+    def delete_trend(self, trend):
+        self.structure.remove(trend)
+
     @property
     def length(self):
         return len(self.structure)

@@ -2,12 +2,15 @@ from abc import ABC, abstractmethod
 
 
 class AbstractStructure(ABC):
-    def __init__(self, structure):
+    def __init__(self, structure: list or None):
         self.structure = structure if structure is not None else []
-        self.substructure = []
 
     @abstractmethod
     def add_trend(self, trend):
+        pass
+
+    @abstractmethod
+    def delete_trend(self, trend):
         pass
 
     @property
