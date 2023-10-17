@@ -1,9 +1,16 @@
 import os
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
+
 from DataWalker import DataWalker
 from Preprocessing.OHLCDataManager import OHLCDataManager
 from Preprocessing.OHLCLocalMapperDF import OHLCLocalMapperDF
 from Preprocessing.OHLCLocalSource import OHLCLocalSource
+from Serializer import Serializer
+from Visualizer import Visualizer
 
 
 def get_first_filename(directory_path):
@@ -36,3 +43,18 @@ for bar in range(bars.shape[0]):
     data_walker.next()
 
 print("Completed!")
+
+serializer = Serializer()
+serialized_structure = serializer.structure_to_dict(data_walker.structure)
+print(serialized_structure)
+
+visualizer = Visualizer(bars=bars, serialized_structure=serialized_structure)
+visualizer.plot()
+
+
+
+
+
+
+
+

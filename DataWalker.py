@@ -69,7 +69,8 @@ class DataWalker(AbstractDataWalker):
 
         if should_delete_current:
             if self.current_trend.parent_trend:
-                self.current_trend.parent_trend.subtrends.remove(self.current_trend)
+                if self.current_trend.status == 0:
+                    self.current_trend.parent_trend.subtrends.remove(self.current_trend)
                 self.assign_parent_trend_as_current_trend()
                 self.analyze_bar()
             else:
@@ -79,6 +80,10 @@ class DataWalker(AbstractDataWalker):
                                               parent_trend=None)
                 self.current_trend = new_trend
                 self.structure.add_trend(self.current_trend)
+
+        confirmed_layer = 8
+        if self.current_trend.layer >= confirmed_layer:
+            self.change_status(confirmed_layer=confirmed_layer)
 
     def calculate_speed(self, point0, point1):
         return (point1.price - point0.price) / (point1.id - point0.id)
@@ -96,4 +101,13 @@ class DataWalker(AbstractDataWalker):
     def assign_parent_trend_as_current_trend(self):
         self.current_trend = self.current_trend.parent_trend
 
+    def change_status(self, confirmed_layer):
+        if self.current_trend.layer >= confirmed_layer:
+            self.current_trend.status = 1
+            self.change_parent_status(trend=self.current_trend.parent_trend)
+
+    def change_parent_status(self, trend):
+        if trend is not None:
+            trend.status = 1
+            self.change_parent_status(trend.parent_trend)
 

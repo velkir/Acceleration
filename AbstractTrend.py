@@ -10,6 +10,9 @@ class AbstractTrend(ABC):
         self.delta = self.calculate_delta()
         self.subtrends = []
         self.parent_trend = parent_trend
+        self.layer = parent_trend.layer + 1 if parent_trend is not None else 0
+        self.status = 0
+
     @abstractmethod
     def calculate_speed(self):
         pass
